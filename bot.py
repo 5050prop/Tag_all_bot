@@ -27,7 +27,7 @@ Bot tagall Mondstadt Mafia
     link_preview=False,
     buttons=(
        [
-        Button.url(' support', 'https://t.me/suppor_mondstadt_bot'),
+        Button.url(' support', 'https://t.me/mondstadt_helperbot'),
         Button.url('chat', 'https://t.me/inadzumachats')
     ],
     )
@@ -41,7 +41,7 @@ async def help(event):
     link_preview=False,
     buttons=(
       [
-        Button.url(' support', 'https://t.me/suppor_mondstadt_bot'),
+        Button.url(' support', 'https://t.me/mondstadt_helperbot'),
         Button.url('chat', 'https://t.me/inadzumachats')
       ]
     )
@@ -113,7 +113,7 @@ async def mentionall(event):
 @client.on(events.NewMessage(pattern="^/stoptag$"))
 async def cancel_spam(event):
   if not event.chat_id in spam_chats:
-    return await event.respond('__There is no proccess on going...__')
+    return await event.respond('Не Запущено')
   is_admin = False
   try:
     partici_ = await client(GetParticipantRequest(
@@ -134,13 +134,13 @@ async def cancel_spam(event):
     ):
       is_admin = True
   if not is_admin:
-    return await event.respond("__Only admins stop")
+    return await event.respond("Только админ, может использувать, данную команду ")
   else:
     try:
       spam_chats.remove(event.chat_id)
     except:
       pass
-    return await event.respond('__Stopped.__')
+    return await event.respond('Отмена')
 
 print(">> BOT STARTED <<")
 client.run_until_disconnected()
