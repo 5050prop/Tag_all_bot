@@ -22,36 +22,36 @@ spam_chats = []
 async def start(event):
   await event.reply(
 """
-Bot tagall Mondstadt Mafia
+Привет! я @Tag_all_bot. Я умею тегать людей в чате
 """,
     link_preview=False,
     buttons=(
        [
-        Button.url(' support', 'https://t.me/mondstadt_helperbot'),
-        Button.url('chat', 'https://t.me/inadzumachats')
+        Button.url(' Новости', 'https://t.me/Tag_all_bot_News'),
+        Button.url('Команды', 'https://t.me/')
     ],
     )
   )
 
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
-  helptext = "COMMANDS:/call,/stoptag. excample /call hi add me your groups iam best tagger pro bot"
+  helptext = "COMMANDS:/starttag,/finish. excample /call hi add me your groups iam best tagger pro bot"
   await event.reply(
     helptext,
     link_preview=False,
     buttons=(
       [
-        Button.url(' support', 'https://t.me/mondstadt_helperbot'),
-        Button.url('chat', 'https://t.me/inadzumachats')
+        Button.url(' Новости', 'https://t.me/Tag_all_bot_News'),
+        Button.url('Команды', 'https://t.me/')
       ]
     )
   )
   
-@client.on(events.NewMessage(pattern="^/call ?(.*)"))
+@client.on(events.NewMessage(pattern="^/starttag ?(.*)"))
 async def mentionall(event):
   chat_id = event.chat_id
   if event.is_private:
-    return await event.respond("__This command can be use in groups and channels!__")
+    return await event.respond("__Эту команду можно использовать в группах и каналах!__")
   
   is_admin = False
   try:
@@ -73,7 +73,7 @@ async def mentionall(event):
     ):
       is_admin = True
   if not is_admin:
-    return await event.respond("__Only admins can mention all!__")
+    return await event.respond("_Только админы могут команду!__")
   
   if event.pattern_match.group(1) and event.is_reply:
     return await event.respond("__Give me one argument!__")
@@ -84,9 +84,9 @@ async def mentionall(event):
     mode = "text_on_reply"
     msg = await event.get_reply_message()
     if msg == None:
-        return await event.respond("__I can't mention members for older messages! (messages which are sent before I'm added to group)__")
+        return await event.respond("__Я не могу упоминать участников для более старых сообщений! (сообщения, отправленные до того, как меня добавили в группу)__")
   else:
-    return await event.respond("__Reply to a message or give me some text to mention others!__")
+    return await event.respond("__Ответьте на сообщение или дайте мне текст, чтобы упомянуть других!__")
   
   spam_chats.append(chat_id)
   usrnum = 0
@@ -110,7 +110,7 @@ async def mentionall(event):
   except:
     pass
 
-@client.on(events.NewMessage(pattern="^/stoptag$"))
+@client.on(events.NewMessage(pattern="^/finish$"))
 async def cancel_spam(event):
   if not event.chat_id in spam_chats:
     return await event.respond('Не Запущено')
@@ -134,13 +134,13 @@ async def cancel_spam(event):
     ):
       is_admin = True
   if not is_admin:
-    return await event.respond("Только админ, может использувать, данную команду ")
+    return await event.respond("")
   else:
     try:
       spam_chats.remove(event.chat_id)
     except:
       pass
-    return await event.respond('Отмена')
+    return await event.respond('Остановлено')
 
 print(">> BOT STARTED <<")
 client.run_until_disconnected()
