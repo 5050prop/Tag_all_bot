@@ -22,7 +22,7 @@ spam_chats = []
 async def start(event):
   await event.reply(
 """
-Привет! я @Tag_all_bot. Я умею тегать людей в чате
+Привет! я @Tag_alll_bot. Я умею тегать людей в чате
 """,
     link_preview=False,
     buttons=(
