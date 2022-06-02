@@ -28,7 +28,7 @@ async def start(event):
     buttons=(
        [
         Button.url(' Новости', 'https://t.me/Tag_all_bot_News'),
-        Button.url('Команды', 'https://t.me/')
+        Button.url('Команды', 'https://telegra.ph/Komandy-06-02')
     ],
     )
   )
@@ -42,7 +42,7 @@ async def help(event):
     buttons=(
       [
         Button.url(' Новости', 'https://t.me/Tag_all_bot_News'),
-        Button.url('Команды', 'https://t.me/')
+        Button.url('Команды', 'https://telegra.ph/Komandy-06-02')
       ]
     )
   )
