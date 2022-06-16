@@ -31,7 +31,7 @@ async def start(event):
 
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
-  helptext = "COMMANDS:/starttag,/finish. excample /call hi add me your groups iam best tagger pro bot"
+  helptext = "COMMANDS:/tagall,/finish."
   await event.reply(
     helptext,
     link_preview=False,
