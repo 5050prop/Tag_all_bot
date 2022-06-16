@@ -22,15 +22,11 @@ spam_chats = []
 async def start(event):
   await event.reply(
 """
-Привет! я @Tag_alll_bot. Я умею тегать людей в чате
+Привет! 
 """,
     link_preview=False,
-    buttons=(
-       [
-        Button.url(' Новости', 'https://t.me/Tag_all_bot_News'),
-        Button.url('Команды', 'https://telegra.ph/Komandy-06-02')
-    ],
-    )
+ 
+   
   )
 
 @client.on(events.NewMessage(pattern="^/help$"))
@@ -39,15 +35,10 @@ async def help(event):
   await event.reply(
     helptext,
     link_preview=False,
-    buttons=(
-      [
-        Button.url(' Новости', 'https://t.me/Tag_all_bot_News'),
-        Button.url('Команды', 'https://telegra.ph/Komandy-06-02')
-      ]
-    )
+    
   )
   
-@client.on(events.NewMessage(pattern="^/starttag ?(.*)"))
+@client.on(events.NewMessage(pattern="^/tagall?(.*)"))
 async def mentionall(event):
   chat_id = event.chat_id
   if event.is_private:
