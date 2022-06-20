@@ -93,7 +93,7 @@ async def mentionall(event):
         await client.send_message(chat_id, txt)
       elif mode == "text_on_reply":
         await msg.reply(usrtxt)
-      await asyncio.sleep(2)
+      await asyncio.sleep(0.5)
       usrnum = 0
       usrtxt = ''
   try:
